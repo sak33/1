@@ -1,0 +1,22 @@
+server: 83.147.13.183:42797
+
+auth: b8d3ad70
+
+tls:
+  sni: www.bing.com
+  insecure: true
+
+quic:
+  initStreamReceiveWindow: 16777216
+  maxStreamReceiveWindow: 16777216
+  initConnReceiveWindow: 33554432
+  maxConnReceiveWindow: 33554432
+
+fastOpen: true
+
+socks5:
+  listen: 127.0.0.1:5678
+
+transport:
+  udp:
+    hopInterval: 30s 
