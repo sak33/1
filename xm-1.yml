@@ -1,0 +1,31 @@
+# 1. 基础配置（必须有这些，不能直接写节点）
+mode: rule
+allow-lan: true
+log-level: info
+
+# 2. 节点定义（关键：必须有 proxies 这一行，且下方节点要缩进）
+proxies:
+  - name: "realm-2"
+    type: vless
+    server: 45.207.157.59
+    port: 6666
+    uuid: 435b42cf-86e4-4957-b3a6-975b514f1487
+    udp: true
+    tls: false
+    network: ws
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        Host: "cl001.ag2wp7z8.workers.dev"
+
+# 3. 策略组（必须引用上面定义的节点）
+proxy-groups:
+  - name: "🚀 节点选择"
+    type: select
+    proxies:
+      - "realm-2"
+      - DIRECT
+
+# 4. 规则
+rules:
+  - MATCH,🚀 节点选择
