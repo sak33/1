@@ -1,0 +1,24 @@
+proxies:
+  - name: "realm-2"
+    type: vless
+    server: 45.207.157.59
+    port: 6666
+    uuid: 435b42cf-86e4-4957-b3a6-975b514f1487
+    udp: true
+    tls: false # 根据链接判断，未开启 TLS
+    network: ws
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        Host: "cl001.ag2wp7z8.workers.dev"
+
+proxy-groups:
+  - name: "🚀 节点选择"
+    type: select
+    proxies:
+      - "realm-2"
+      - DIRECT
+
+rules:
+  - GEOIP,CN,DIRECT
+  - MATCH,🚀 节点选择
